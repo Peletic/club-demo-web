@@ -12,14 +12,14 @@ export default function Home() {
 
     // Dimensions
     const width = 15;
-    const height = 10;
+    const height = 15;
 
     // Goal
     const goal = {xPos: 14, yPos: 9}
 
     const [mapState, setMapState] = useState(new PathfinderMap(width, height, goal))
 
-    return (<div className={"bg-purple-500/10 min-w-[100vw] min-h-[100vh]"}>
+    return (<div className={"bg-purple-500/10 min-w-full min-h-full m-0 p-0 flex flex-col"}>
         <PageHeader>
             Pathfinder
         </PageHeader>
@@ -29,6 +29,8 @@ export default function Home() {
                     forceUpdate()
                 }}>Tick
         </button>
-        <PathfinderGrid mapState={mapState} setMapState={setMapState}/>
+
+        <PathfinderGrid mapState={mapState} setMapState={setMapState} width={width} height={height}/>
+
     </div>)
 }

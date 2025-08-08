@@ -3,10 +3,10 @@ import {findByState} from "@/lib/pathfinder/algorithm/utils";
 
 export function astar(map: { state: CellState; xPos: number, yPos: number }[][]) {
     const stateWeights = {
-        wall: 100,
+        wall: 999,
         occupied: 0,
         blank: 0,
-        walked: 0,
+        walked: 40,
         goal: 0
     }
 
