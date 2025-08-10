@@ -38,11 +38,11 @@ export function astar(map: { state: CellState; xPos: number, yPos: number }[][])
     return current
 }
 
-function getDistance(pointA, pointB) {
+function getDistance(pointA: { xPos: number; yPos: number; }, pointB: { xPos: any; yPos: any; }) {
     return Math.abs(pointA.xPos - pointB.xPos) + Math.abs(pointA.yPos - pointB.yPos)
 }
 
-function getOpenList(current, map) {
+function getOpenList(current: { xPos: any; yPos: any; state: string; }, map: { state: CellState; xPos: number; yPos: number; }[]) {
     const openList = [current]
     for (const el of map) {
         if (Math.abs(el.xPos - current.xPos) <= 1 && Math.abs(el.yPos - current.yPos) <= 1) {
