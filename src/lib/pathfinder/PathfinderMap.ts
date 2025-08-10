@@ -7,7 +7,6 @@ export default class PathfinderMap {
     map: { state: CellState; xPos: number, yPos: number}[][] = []
 
     constructor(width: number, height: number, goal: Coordinate, origin: Coordinate = {xPos: 0, yPos: 0}, walls?: Coordinate[]) {
-        console.log("Constructing new pathfinder map")
         for (let x = 0; x < width; x++) {
             this.map[x] = []
             for (let y = 0; y < height; y++) {
