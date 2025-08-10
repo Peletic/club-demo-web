@@ -21,7 +21,9 @@ export function astar(map: { state: CellState; xPos: number, yPos: number }[][])
 
     let current = {state: "occupied", ...currentPos}
     let currentScore = 9999
+
     while (workingMap.length > 0) {
+        //todo: implement backtracking
         for (let neighbor of getOpenList({...current}, workingMap)) {
             const distance = getDistance(neighbor, goalPos)
             const weight = stateWeights[neighbor.state]
