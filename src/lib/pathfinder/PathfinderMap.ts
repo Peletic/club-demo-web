@@ -1,6 +1,7 @@
 import {CellState, Coordinate} from "@/lib/pathfinder/index";
 import {astar} from "@/lib/pathfinder/algorithm/astar";
 import {findByState} from "@/lib/pathfinder/algorithm/utils";
+import {sleep} from "@/lib/pathfinder/utils";
 
 export default class PathfinderMap {
     map: { state: CellState; xPos: number, yPos: number}[][] = []
@@ -47,6 +48,28 @@ export default class PathfinderMap {
         this.setCellState(last, "walked")
         this.setCellState({xPos: step.xPos, yPos: step.yPos}, "occupied")
         return this
+    }
+
+    async cycle(tps: number, updateState?: (newState : PathfinderMap) => void, forceRefresh? : () => void) {
+        const timeout = 75;
+        const sleepCycle = 1000/tps
+
+        const goalCoords = findByState("goal", this.map)
+
+        let cycleNum = 0;
+        let goalMet = false
+
+        while (cycleNum <= timeout && !goalMet) {
+            this.tick()
+            if (updateState) updateState(this)
+            if (forceRefresh) forceRefresh()
+
+            const occupied = findByState("occupied", this.map)
+
+            if (occupied.xPos == goalCoords.xPos && occupied.yPos == goalCoords.yPos) goalMet = true
+
+            await sleep(sleepCycle)
+        }
     }
 
 }

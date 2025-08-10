@@ -14,11 +14,11 @@ export function astar(map: { state: CellState; xPos: number, yPos: number }[][])
     const currentPos: Coordinate = findByState("occupied", map)
     const goalPos: Coordinate = findByState("goal", map)
 
-
     workingMap.splice(workingMap.indexOf({
         state: "occupied",
         ...currentPos
     }), 1)
+
     let current = {state: "occupied", ...currentPos}
     let currentScore = 9999
     while (workingMap.length > 0) {
@@ -34,7 +34,6 @@ export function astar(map: { state: CellState; xPos: number, yPos: number }[][])
         break
     }
 
-    console.log(JSON.stringify(current))
     return current
 }
 

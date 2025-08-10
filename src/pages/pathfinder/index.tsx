@@ -23,13 +23,19 @@ export default function Home() {
         <PageHeader>
             Pathfinder
         </PageHeader>
-        <button className={"bg-purple-500/20 w-24 h-24"}
-                onClick={(e) => {
-                    setMapState(mapState.tick())
-                    forceUpdate()
-                }}>Tick
-        </button>
-
+        <div className={"flex flex-row"}>
+            <button className={"bg-purple-500/20 w-24 h-24"}
+                    onClick={(e) => {
+                        setMapState(mapState.tick())
+                        forceUpdate()
+                    }}>Tick
+            </button>
+            <button className={"bg-purple-500/20 ml-4 w-24 h-24"}
+                    onClick={(e) => {
+                        mapState.cycle(6, forceUpdate)
+                    }}>Cycle
+            </button>
+        </div>
         <PathfinderGrid mapState={mapState} setMapState={setMapState} width={width} height={height}/>
 
     </div>)
