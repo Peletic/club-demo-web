@@ -3,4 +3,4 @@ export type Coordinate = {
     yPos : number
 }
 
-export type CellState = "blank" | "occupied" | "wall" | "goal" | "walked"
+export type CellState = "blank" | "occupied" | "wall" | "goal" | "walked" | "met"

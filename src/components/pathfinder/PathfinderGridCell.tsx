@@ -8,7 +8,8 @@ export default function PathfinderGridCell({mapState, xPos, yPos}) {
         occupied: "bg-green-400/60",
         wall: "bg-blue-600/60",
         goal: "bg-yellow-300/60",
-        walked: "bg-red-300/60"
+        walked: "bg-red-300/60",
+        met: "bg-orange-300"
     }
 
     // Forcibly rerendering
@@ -36,7 +37,7 @@ export default function PathfinderGridCell({mapState, xPos, yPos}) {
                      }
                  }}
 
-             onClick={
+             onMouseDown={
                  () => {
                      if (mapState.getCellState({xPos, yPos}) == "blank") {
                          mapState.setCellState({xPos, yPos}, "wall")
