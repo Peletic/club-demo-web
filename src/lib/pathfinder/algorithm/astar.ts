@@ -23,7 +23,7 @@ export function astar(map: { state: CellState; xPos: number, yPos: number }[][])
     let currentScore = 9999
 
     while (workingMap.length > 0) {
-        //todo: implement backtracking
+        //todo: implement backtracking/lookahead
         console.log(current)
         const neighbors = getOpenList(current, workingMap)
         console.log(neighbors)
